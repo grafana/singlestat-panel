@@ -1,7 +1,9 @@
-import _ from 'lodash';
 import $ from 'jquery';
+// These are already imported (may change in the future!)
 // import 'jquery.flot';
 // import 'jquery.flot.gauge';
+
+import { defaults, extend, indexOf } from 'lodash';
 
 import {
   DataFrame,
@@ -122,7 +124,7 @@ class SingleStatCtrl extends MetricsPanelCtrl {
   /** @ngInject */
   constructor($scope: any, $injector: any, private linkSrv: any, private $sanitize: any) {
     super($scope, $injector);
-    _.defaults(this.panel, this.panelDefaults);
+    defaults(this.panel, this.panelDefaults);
 
     this.events.on(PanelEvents.dataFramesReceived, this.onFramesReceived.bind(this));
     this.events.on(PanelEvents.dataSnapshotLoad, this.onSnapshotLoad.bind(this));
@@ -256,7 +258,7 @@ class SingleStatCtrl extends MetricsPanelCtrl {
       field: fieldInfo.field,
       value: val,
       display: processor(val),
-      scopedVars: _.extend({}, panel.scopedVars),
+      scopedVars: extend({}, panel.scopedVars),
       sparkline,
     };
 
@@ -315,7 +317,7 @@ class SingleStatCtrl extends MetricsPanelCtrl {
   }
 
   removeValueMap(map: any) {
-    const index = _.indexOf(this.panel.valueMaps, map);
+    const index = indexOf(this.panel.valueMaps, map);
     this.panel.valueMaps.splice(index, 1);
     this.render();
   }
@@ -325,7 +327,7 @@ class SingleStatCtrl extends MetricsPanelCtrl {
   }
 
   removeRangeMap(rangeMap: any) {
-    const index = _.indexOf(this.panel.rangeMaps, rangeMap);
+    const index = indexOf(this.panel.rangeMaps, rangeMap);
     this.panel.rangeMaps.splice(index, 1);
     this.render();
   }
