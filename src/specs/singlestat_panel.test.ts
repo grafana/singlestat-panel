@@ -1,4 +1,4 @@
-import { getColorForValue } from '../module';
+import { getColorForValue } from '../util';
 
 describe('grafanaSingleStat', () => {
   describe('legacy thresholds', () => {

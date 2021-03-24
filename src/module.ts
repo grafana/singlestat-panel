@@ -28,7 +28,7 @@ import { convertOldAngularValueMapping } from '@grafana/ui';
 import { config } from '@grafana/runtime';
 
 import { MetricsPanelCtrl } from 'grafana/app/plugins/sdk';
-import { getProcessedDataFrames } from './util';
+import { getProcessedDataFrames, getColorForValue } from './util';
 
 const BASE_FONT_SIZE = 38;
 
@@ -677,20 +677,6 @@ class SingleStatCtrl extends MetricsPanelCtrl {
       ctrl.renderingCompleted();
     });
   }
-}
-
-function getColorForValue(data: any, value: number) {
-  if (!_.isFinite(value)) {
-    return null;
-  }
-
-  for (let i = data.thresholds.length; i > 0; i--) {
-    if (value >= data.thresholds[i - 1]) {
-      return data.colorMap[i];
-    }
-  }
-
-  return _.first(data.colorMap);
 }
 
 //------------------------------------------------

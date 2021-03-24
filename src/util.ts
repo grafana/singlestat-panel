@@ -1,5 +1,19 @@
 import { DataFrame, DataQueryResponseData, FieldType, guessFieldTypeForField, toDataFrame } from '@grafana/data';
-import { isArray } from 'lodash';
+import { isArray, isFinite, first } from 'lodash';
+
+export function getColorForValue(data: any, value: number) {
+  if (!isFinite(value)) {
+    return null;
+  }
+
+  for (let i = data.thresholds.length; i > 0; i--) {
+    if (value >= data.thresholds[i - 1]) {
+      return data.colorMap[i];
+    }
+  }
+
+  return first(data.colorMap);
+}
 
 /**
  * All panels will be passed tables that have our best guess at column type set
