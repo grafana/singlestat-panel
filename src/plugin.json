@@ -1,0 +1,26 @@
+{
+  "type": "panel",
+  "name": "Singlestat",
+  "id": "grafana-singlestat-panel",
+
+  "info": {
+    "description": "Singlestat Panel for Grafana",
+    "author": {
+      "name": "Grafana Labs"
+    },
+    "keywords": [ "stats" ],
+    "logos": {
+      "small": "img/icn-singlestat-panel.svg",
+      "large": "img/icn-singlestat-panel.svg"
+    },
+    "links": [],
+    "screenshots": [],
+    "version": "%VERSION%",
+    "updated": "%TODAY%"
+  },
+
+  "dependencies": {
+    "grafanaVersion": "7.3.x",
+    "plugins": [ ]
+  }
+}
