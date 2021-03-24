@@ -134,8 +134,8 @@ class SingleStatCtrl extends MetricsPanelCtrl {
 
   onInitEditMode() {
     this.fontSizes = ['20%', '30%', '50%', '70%', '80%', '100%', '110%', '120%', '150%', '170%', '200%'];
-    this.addEditorTab('Options', 'public/app/plugins/panel/singlestat/editor.html', 2);
-    this.addEditorTab('Value Mappings', 'public/app/plugins/panel/singlestat/mappings.html', 3);
+    this.addEditorTab('Options', 'public/plugins/grafana-singlestat-panel/editor.html', 2);
+    this.addEditorTab('Value Mappings', 'public/plugins/grafana-singlestat-panel/mappings.html', 3);
   }
 
   setUnitFormat() {
