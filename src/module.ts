@@ -620,8 +620,7 @@ class SingleStatCtrl extends MetricsPanelCtrl {
       if (panel.links.length > 0) {
         const replace: InterpolateFunction = (value, vars, fmt) =>
           this.templateSrv.replace(value, { ...data.scopedVars, ...vars }, fmt);
-
-        linkInfo = linkSrv.getDataLinkUIModel(panel.links[0], replace, {});        
+        linkInfo = linkSrv.getDataLinkUIModel(panel.links[0], replace, {});
       } else {
         linkInfo = null;
       }
