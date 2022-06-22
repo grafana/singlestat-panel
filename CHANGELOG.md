@@ -2,7 +2,7 @@
 
 All notable changes to this project will be documented in this file.
 
-## v1.0.1
+## v2.0.0
 
 - Bump dependencies
 - Migrate to using `getColorByName` instead of `getColorForTheme` to support Grafan 9
