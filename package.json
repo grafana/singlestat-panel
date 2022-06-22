@@ -12,8 +12,7 @@
   "author": "Grafana Labs",
   "license": "Apache-2.0",
   "devDependencies": {
-    "@grafana/data": "9.0.1",
-    "@grafana/ui": "9.0.1",
+    "@grafana/data": "9.0.1",    
     "@grafana/runtime": "9.0.1",
     "@grafana/toolkit": "latest",
     "@types/grafana": "github:CorpGlory/types-grafana.git",

@@ -25,7 +25,7 @@ import {
   getFieldDisplayName,
 } from '@grafana/data';
 
-import { convertOldAngularValueMapping } from '@grafana/ui';
+import { convertOldAngularValueMappings } from '@grafana/data';
 import { config } from '@grafana/runtime';
 
 import { MetricsPanelCtrl } from 'grafana/app/plugins/sdk';
@@ -179,7 +179,7 @@ class SingleStatCtrl extends MetricsPanelCtrl {
       const processor = getDisplayProcessor({
         field: {
           config: {
-            mappings: convertOldAngularValueMapping(this.panel),
+            mappings: convertOldAngularValueMappings(this.panel),
             noValue: 'No Data',
           },
         },
@@ -245,7 +245,7 @@ class SingleStatCtrl extends MetricsPanelCtrl {
           ...fieldInfo.field.config,
           unit: panel.format,
           decimals: panel.decimals,
-          mappings: convertOldAngularValueMapping(panel),
+          mappings: convertOldAngularValueMappings(panel),
         },
       },
       theme: config.theme2,
