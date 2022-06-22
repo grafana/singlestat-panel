@@ -24,6 +24,7 @@ import {
   locationUtil,
   getFieldDisplayName,
   getColorForTheme,
+  InterpolateFunction,
 } from '@grafana/data';
 
 import { convertOldAngularValueMapping } from '@grafana/ui';
@@ -618,7 +619,10 @@ class SingleStatCtrl extends MetricsPanelCtrl {
       elem.toggleClass('pointer', panel.links.length > 0);
 
       if (panel.links.length > 0) {
-        linkInfo = linkSrv.getDataLinkUIModel(panel.links[0], data.scopedVars, {});
+        const replace: InterpolateFunction = (value, vars, fmt) =>
+          this.templateSrv.replace(value, { ...data.scopedVars, ...vars }, fmt);
+
+        linkInfo = linkSrv.getDataLinkUIModel(panel.links[0], replace, {});
       } else {
         linkInfo = null;
       }
