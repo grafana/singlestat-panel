@@ -23,7 +23,6 @@ import {
   formattedValueToString,
   locationUtil,
   getFieldDisplayName,
-  getColorForTheme,
 } from '@grafana/data';
 
 import { convertOldAngularValueMapping } from '@grafana/ui';
@@ -184,7 +183,7 @@ class SingleStatCtrl extends MetricsPanelCtrl {
             noValue: 'No Data',
           },
         },
-        theme: config.theme,
+        theme: config.theme2,
         timeZone: this.dashboard.getTimezone(),
       });
       // When we don't have any field
@@ -249,7 +248,7 @@ class SingleStatCtrl extends MetricsPanelCtrl {
           mappings: convertOldAngularValueMapping(panel),
         },
       },
-      theme: config.theme,
+      theme: config.theme2,
       timeZone: dashboard.getTimezone(),
     });
 
@@ -539,7 +538,7 @@ class SingleStatCtrl extends MetricsPanelCtrl {
             show: true,
             fill: 1,
             lineWidth: 1,
-            fillColor: getColorForTheme(panel.sparkline.fillColor, config.theme),
+            fillColor: config.theme.visualization.getColorByName(panel.sparkline.fillColor),
             zero: false,
           },
         },
@@ -561,7 +560,7 @@ class SingleStatCtrl extends MetricsPanelCtrl {
 
       const plotSeries = {
         data: data.sparkline,
-        color: getColorForTheme(panel.sparkline.lineColor, config.theme),
+        color: config.theme.visualization.getColorByName(panel.sparkline.lineColor),
       };
 
       $.plot(plotCanvas, [plotSeries], options);
@@ -582,7 +581,7 @@ class SingleStatCtrl extends MetricsPanelCtrl {
 
       // Map panel colors to hex or rgb/a values
       if (panel.colors) {
-        data.colorMap = panel.colors.map((color: string) => getColorForTheme(color, config.theme));
+        data.colorMap = panel.colors.map((color: string) => config.theme.visualization.getColorByName(color));
       }
 
       const body = panel.gauge.show ? '' : getBigValueHtml();
